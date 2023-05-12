@@ -18,10 +18,10 @@ Table Of Contents:
 Colors:
 
 - Text, navbar links - white #f1f1f8
-- Buttons, bullets, icons - turquoise #00c9db
-- Navbar - navy #4633af
-- Backgrounds - dark denim #262431
-- Backgrounds - denim #2f2c3d
+- Buttons, bullets, icons - turquoise #00b4ff
+- Navbar - navy #07035e
+- Backgrounds - dark denim #07035e
+- Backgrounds - denim #b5d6e6
 - azul escuro - logo #07035e
 - azul claro - logo #00b4ff
 ******************************************/
@@ -136,7 +136,7 @@ a:hover {
 }
 
 a.turquoise {
-	color: #00c9db;
+	color: #00b4ff;
 }
 
 a.white {
@@ -154,9 +154,9 @@ a.white {
 .btn-solid-reg {
 	display: inline-block;
 	padding: 1.1875rem 2.125rem 1.1875rem 2.125rem;
-	border: 0.125rem solid #00c9db;
+	border: 0.125rem solid #00b4ff;
 	border-radius: 2rem;
-	background-color: #00c9db;
+	background-color: #00b4ff;
 	color: #fff;
 	font: 700 0.75rem/0 "Montserrat", sans-serif;
 	text-decoration: none;
@@ -165,16 +165,16 @@ a.white {
 
 .btn-solid-reg:hover {
 	background-color: transparent;
-	color: #00c9db;
+	color: #00b4ff;
 	text-decoration: none;
 }
 
 .btn-solid-lg {
 	display: inline-block;
 	padding: 1.375rem 2.625rem 1.375rem 2.625rem;
-	border: 0.125rem solid #00c9db;
+	border: 0.125rem solid #00b4ff;
 	border-radius: 2rem;
-	background-color: #00c9db;
+	background-color: #00b4ff;
 	color: #fff;
 	font: 700 0.75rem/0 "Montserrat", sans-serif;
 	text-decoration: none;
@@ -183,7 +183,7 @@ a.white {
 
 .btn-solid-lg:hover {
 	background-color: transparent;
-	color: #00c9db;
+	color: #00b4ff;
 	text-decoration: none;
 }
 
@@ -201,17 +201,17 @@ a.white {
 .btn-outline-reg {
 	display: inline-block;
 	padding: 1.1875rem 2.125rem 1.1875rem 2.125rem;
-	border: 0.125rem solid #00c9db;
+	border: 0.125rem solid #00b4ff;
 	border-radius: 2rem;
 	background-color: transparent;
-	color: #00c9db;
+	color: #00b4ff;
 	font: 700 0.75rem/0 "Montserrat", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
 }
 
 .btn-outline-reg:hover {
-	background-color: #00c9db;
+	background-color: #00b4ff;
 	color: #fff;
 	text-decoration: none;
 }
@@ -219,17 +219,17 @@ a.white {
 .btn-outline-lg {
 	display: inline-block;
 	padding: 1.375rem 2.625rem 1.375rem 2.625rem;
-	border: 0.125rem solid #00c9db;
+	border: 0.125rem solid #00b4ff;
 	border-radius: 2rem;
 	background-color: transparent;
-	color: #00c9db;
+	color: #00b4ff;
 	font: 700 0.75rem/0 "Montserrat", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
 }
 
 .btn-outline-lg:hover {
-	background-color: #00c9db;
+	background-color: #00b4ff;
 	color: #fff;
 	text-decoration: none;
 }
@@ -237,17 +237,17 @@ a.white {
 .btn-outline-sm {
 	display: inline-block;
 	padding: 1rem 1.625rem 0.875rem 1.625rem;
-	border: 0.125rem solid #00c9db;
+	border: 0.125rem solid #00b4ff;
 	border-radius: 2rem;
 	background-color: transparent;
-	color: #00c9db;
+	color: #00b4ff;
 	font: 700 0.625rem/0 "Montserrat", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
 }
 
 .btn-outline-sm:hover {
-	background-color: #00c9db;
+	background-color: #00b4ff;
 	color: #fff;
 	text-decoration: none;
 }
@@ -395,9 +395,9 @@ input[type='checkbox'] {
 	display: inline-block;
 	width: 100%;
 	height: 3.125rem;
-	border: 1px solid #00c9db;
+	border: 1px solid #00b4ff;
 	border-radius: 1.5rem;
-	background-color: #00c9db;
+	background-color: #00b4ff;
 	color: #fff;
 	font: 700 0.75rem/1.75rem "Montserrat", sans-serif;
 	cursor: pointer;
@@ -406,7 +406,7 @@ input[type='checkbox'] {
 
 .form-control-submit-button:hover {
 	background-color: transparent;
-	color: #00c9db;
+	color: #00b4ff;
 }
 
 /* Form Success And Error Message Formatting */
@@ -603,7 +603,7 @@ input[type='checkbox'] {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: #2f2c3d;
+	background: #b5d6e6;
 }
 
 .spinner {
@@ -658,7 +658,7 @@ input[type='checkbox'] {
 /*     03. Navigation     */
 /**************************/
 .navbar-custom {
-	background-color: #4633af;
+	background-color: #07035e;
 	box-shadow: 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.1);
 	font: 700 0.75rem/2rem "Montserrat", sans-serif;
 	transition: all 0.2s;
@@ -691,7 +691,7 @@ input[type='checkbox'] {
 
 .navbar-custom .nav-item .nav-link:hover,
 .navbar-custom .nav-item .nav-link.active {
-	color: #00c9db;
+	color: #00b4ff;
 }
 
 /* Dropdown Menu */
@@ -719,7 +719,7 @@ input[type='checkbox'] {
 	margin-top: 0;
 	border: none;
 	border-radius: 0.25rem;
-	background-color: #4633af;
+	background-color: #07035e;
 }
 
 .navbar-custom .dropdown-item {
@@ -728,7 +728,7 @@ input[type='checkbox'] {
 }
 
 .navbar-custom .dropdown-item:hover {
-	background-color: #4633af;
+	background-color: #07035e;
 }
 
 .navbar-custom .dropdown-item .item-text {
@@ -736,7 +736,7 @@ input[type='checkbox'] {
 }
 
 .navbar-custom .dropdown-item:hover .item-text {
-	color: #00c9db;
+	color: #00b4ff;
 }
 
 .navbar-custom .dropdown-items-divide-hr {
@@ -819,7 +819,7 @@ input[type='checkbox'] {
 .slider-1 {
 	padding-top: 6.875rem;
 	padding-bottom: 6.375rem;
-	background-color: #262431;
+	background-color: #07035e;
 }
 
 .slider-1 .slider-container {
@@ -880,7 +880,7 @@ input[type='checkbox'] {
 .tabs {
 	padding-top: 6.5rem;
 	padding-bottom: 4.25rem;
-	background-color: #2f2c3d;
+	background-color: #b5d6e6;
 }
 
 .tabs h2 {
@@ -914,9 +914,9 @@ input[type='checkbox'] {
 
 .tabs .nav-link.active,
 .tabs .nav-link:hover {
-	border-bottom: 0.1875rem solid #00c9db;
+	border-bottom: 0.1875rem solid #00b4ff;
 	background-color: transparent;
-	color: #00c9db;
+	color: #00b4ff;
 }
 
 .tabs .nav-link .fas {
@@ -946,7 +946,7 @@ input[type='checkbox'] {
 	width: 3.5rem;
 	height: 3.5rem;
 	border-radius: 50%;
-	background-color: #00c9db;
+	background-color: #00b4ff;
 	text-align: center;
 	vertical-align: top;
 }
@@ -1132,7 +1132,7 @@ input[type='checkbox'] {
 .basic-2 {
 	padding-top: 8rem;
 	padding-bottom: 3.5rem;
-	background-color: #262431;
+	background-color: #07035e;
 }
 
 .basic-2 img {
@@ -1154,7 +1154,7 @@ input[type='checkbox'] {
 .basic-3 {
 	padding-top: 3.5rem;
 	padding-bottom: 7.25rem;
-	background-color: #262431;
+	background-color: #07035e;
 }
 
 .basic-3 .text-container {
@@ -1179,7 +1179,7 @@ input[type='checkbox'] {
 	margin: 2.5rem auto;
 	padding: 3rem 1rem;
 	border-radius: 0.25rem;
-	background-color: #2f2c3d;
+	background-color: #b5d6e6;
 	text-align: left;
 }
 
@@ -1201,7 +1201,7 @@ input[type='checkbox'] {
 	margin-bottom: 1.125rem;
 	margin-left: 0;
 	border: 0;
-	background-color: #00c9db;
+	background-color: #00b4ff;
 	text-align: left;
 }
 
@@ -1222,7 +1222,7 @@ input[type='checkbox'] {
 .lightbox-basic table .icon-cell {
 	width: 2rem;
 	padding-right: 0.25rem;
-	color: #00c9db;
+	color: #00b4ff;
 	text-align: center;
 }
 
@@ -1231,7 +1231,7 @@ input[type='checkbox'] {
 	width: auto;
 	height: auto;
 	margin-left: 0.375rem;
-	color: #00c9db;
+	color: #00b4ff;
 	opacity: 1;
 }
 
@@ -1328,7 +1328,7 @@ input[type='checkbox'] {
 .counter {
 	padding-top: 6.5rem;
 	padding-bottom: 5.375rem;
-	background-color: #262431;
+	background-color: #07035e;
 	text-align: center;
 }
 
@@ -1348,7 +1348,7 @@ input[type='checkbox'] {
 
 .counter #counter .counter-info {
 	margin-bottom: 0;
-	color: #00c9db;
+	color: #00b4ff;
 	font: 400 0.875rem/1.25rem "Open Sans", sans-serif;
 	vertical-align: middle;
 }
@@ -1380,7 +1380,7 @@ input[type='checkbox'] {
 .form .list-unstyled .fab {
 	margin-right: 0.5rem;
 	font-size: 0.875rem;
-	color: #00c9db;
+	color: #00b4ff;
 }
 
 .form .list-unstyled .fa-phone {
@@ -1393,7 +1393,7 @@ input[type='checkbox'] {
 /**********************/
 .footer {
 	padding-top: 5rem;
-	background-color: #262431;
+	background-color: #07035e;
 }
 
 .footer .footer-col {
@@ -1405,7 +1405,7 @@ input[type='checkbox'] {
 }
 
 .footer .list-unstyled .fas {
-	color: #00c9db;
+	color: #00b4ff;
 	font-size: 0.5rem;
 	line-height: 1.375rem;
 }
@@ -1421,7 +1421,7 @@ input[type='checkbox'] {
 }
 
 .footer .fa-stack .fa-stack-1x {
-    color: #262431;
+    color: #07035e;
 	transition: all 0.2s ease;
 }
 
@@ -1435,7 +1435,7 @@ input[type='checkbox'] {
 }
 
 .footer .fa-stack:hover .fa-stack-2x {
-    color: #00c9db;
+    color: #00b4ff;
 }
 
 
@@ -1445,7 +1445,7 @@ input[type='checkbox'] {
 .copyright {
 	padding-top: 1rem;
 	padding-bottom: 0.5rem;
-	background-color: #262431;
+	background-color: #07035e;
 	text-align: center;
 }
 
@@ -1467,7 +1467,7 @@ a.back-to-top {
 	width: 2.625rem;
 	height: 2.625rem;
 	border-radius: 1.875rem;
-	background: #00c9db url("../images/up-arrow.png") no-repeat center 47%;
+	background: #00b4ff url("../images/up-arrow.png") no-repeat center 47%;
 	background-size: 1.125rem 1.125rem;
 	text-indent: -9999px;
 }
@@ -1490,7 +1490,7 @@ a:hover.back-to-top {
 .ex-basic-1 {
 	padding-top: 2rem;
 	padding-bottom: 0.875rem;
-	background-color: #2f2c3d;
+	background-color: #b5d6e6;
 }
 
 .ex-basic-1 .breadcrumbs {
@@ -1505,7 +1505,7 @@ a:hover.back-to-top {
 .ex-basic-2 {
 	padding-top: 4.75rem;
 	padding-bottom: 4rem;
-	background-color: #262431;
+	background-color: #07035e;
 }
 
 .ex-basic-2 h3 {
@@ -1521,7 +1521,7 @@ a:hover.back-to-top {
 }
 
 .ex-basic-2 .list-unstyled .fas {
-	color: #00c9db;
+	color: #00b4ff;
 	font-size: 0.5rem;
 	line-height: 1.375rem;
 }
@@ -1593,13 +1593,13 @@ a:hover.back-to-top {
 	
 	.navbar-custom .nav-item .nav-link:hover,
 	.navbar-custom .nav-item .nav-link.active {
-		color: #00c9db;
+		color: #00b4ff;
 	}
 
 	.navbar-custom.top-nav-collapse {
         padding: 0.5rem 1.5rem 0.5rem 2rem;
 		box-shadow: 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.1);
-		background-color: #4633af;
+		background-color: #07035e;
 	}
 
 	.navbar-custom.top-nav-collapse .navbar-brand.logo-text {
@@ -1612,7 +1612,7 @@ a:hover.back-to-top {
 	
 	.navbar-custom.top-nav-collapse .nav-item .nav-link:hover,
 	.navbar-custom.top-nav-collapse .nav-item .nav-link.active {
-		color: #00c9db;
+		color: #00b4ff;
 	}
 
 	.navbar-custom .dropdown-menu {
@@ -1777,7 +1777,7 @@ a:hover.back-to-top {
 	}
 	
 	.navbar-custom .fa-stack-2x {
-		color: #00c9db;
+		color: #00b4ff;
 		transition: all 0.2s ease;
 	}
 	
@@ -1791,7 +1791,7 @@ a:hover.back-to-top {
 	}
 
 	.navbar-custom .fa-stack:hover .fa-stack-1x {
-		color: #00c9db;
+		color: #00b4ff;
 	}
 	/* end of navigation */
 
