@@ -2,19 +2,84 @@
 import type { FormEvent } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Shield, Network, ArrowRight, Server, House, AudioLines, Code2, Plug, MessageCircle } from 'lucide-react'
+import { Shield, Network, ArrowRight, Server, House, AudioLines, Code2, MessageCircle, CircuitBoard, Cpu, CloudCog, Radio } from 'lucide-react'
 import { Button, ButtonOutline } from '@/components/ui/Button'
 import { Card, CardBody, CardTitle, CardSub } from '@/components/ui/Card'
 
 const nav = [
   { id: 'servicos', label: 'Serviços' },
+  { id: 'industria', label: 'Indústria Conectada' },
   { id: 'sobre', label: 'Sobre' },
   { id: 'cases', label: 'Cases' },
   { id: 'tech', label: 'Tecnologias' },
   { id: 'contato', label: 'Contato' },
 ]
+const featuredCases = [
+  {
+    tag: 'SaaS/Marketplace',
+    title: 'BanhoPet',
+    desc: 'Marketplace de servicos pet com split de pagamento, geolocalizacao e agendamento inteligente (Flutter + Nest + Postgres).',
+    logo: '/logo_banhopet.png',
+    logoAlt: 'BanhoPet',
+  },
+  {
+    tag: 'Automacao & Audio',
+    title: 'Future ON',
+    desc: 'Automacao residencial e sonorizacao ambiente com projetos assinados por Engenheiro de Computacao registrado no CREA.',
+    logo: '/logo-futureon.svg',
+    logoAlt: 'Future ON',
+  },
+  {
+    tag: 'TI Corporativa',
+    title: 'Infraestrutura para Empresas',
+    desc: 'Redes, servidores, seguranca e suporte continuo (SLA) para operacoes sem interrupcoes.',
+    logo: '/logo-ti-corporativa.svg',
+    logoAlt: 'Infraestrutura corporativa',
+  },
+] as const
 
+const techBadges = [
+  { icon: '⚛️', label: 'React / React Native' },
+  { icon: '🟢', label: 'Node.js / npm' },
+  { icon: '🧱', label: 'NestJS' },
+  { icon: '🧩', label: 'Prisma ORM' },
+  { icon: '🐘', label: 'PostgreSQL / PostGIS' },
+  { icon: '🟥', label: 'Redis' },
+  { icon: '🔥', label: 'Firebase' },
+  { icon: '☁️', label: 'Google Cloud' },
+  { icon: '🟧', label: 'AWS' },
+  { icon: '📦', label: 'Docker' },
+  { icon: '📱', label: 'Flutter' },
+  { icon: '🤖', label: 'Android' },
+  { icon: '💜', label: 'Kotlin' },
+  { icon: '🪐', label: 'TypeScript' },
+  { icon: '🟨', label: 'JavaScript' },
+  { icon: '🐍', label: 'Python' },
+  { icon: '🧪', label: 'Cypress / Jest' },
+  { icon: '🧭', label: 'Git / GitHub' },
+  { icon: '🖥️', label: 'Visual Studio / VS Code' },
+  { icon: '🎨', label: 'Adobe Photoshop / Illustrator' },
+  { icon: '🎬', label: 'Adobe Premiere Pro' },
+  { icon: '📐', label: 'Figma / Adobe XD' },
+  { icon: '🧮', label: 'Raspberry Pi / Arduino' },
+  { icon: '🔌', label: 'MQTT / Zigbee' },
+] as const
 
+const industrialHighlights = [
+  { icon: CircuitBoard, title: 'PCBs e gateways sob medida', desc: 'Prototipagem rapida, design de placas e montagem de lotes pilotos com conformidade EMC.' },
+  { icon: Cpu, title: 'Firmware e automacao embarcada', desc: 'Desenvolvimento em C/C++, Python e Node-RED para PLCs, microcontroladores e edge devices.' },
+  { icon: CloudCog, title: 'Integracao com nuvem e analytics', desc: 'Gateways seguros, APIs e dashboards para supervisao em tempo real e manutencao preditiva.' },
+  { icon: Radio, title: 'Telemetria industrial resiliente', desc: 'LoRaWAN, Zigbee, NB-IoT, 4G/LTE e protocolos Modbus/MQTT para conectar ativos distribuidos.' },
+] as const
+
+const industrialStacks = [
+  'Edge Linux + Docker + Yocto',
+  'LoRaWAN / Zigbee / MQTT',
+  'APIs REST / GraphQL',
+  'Dashboards Power BI / Superset',
+  'Integracao ERP (SAP, TOTVS, Bling)',
+  'Alertas via WhatsApp Business API',
+] as const
 
 const WHATSAPP_NUMBER = '5514997040256'
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`
@@ -91,7 +156,7 @@ export default function Page() {
               Engenharia e Tecnologia que Conectam o Futuro
             </motion.h1>
             <motion.p initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:0.7,delay:0.1}} className="mt-4 text-muted-foreground text-lg">
-              Soluções em <strong>TI Corporativa</strong>, <strong>Automação & Sonorização</strong> e <strong>Desenvolvimento Full Stack</strong> — com a segurança de um Engenheiro de Computação registrado no CREA.
+              Soluções em <strong>TI Corporativa</strong>, <strong>Automação & Sonorização</strong> e <strong>Desenvolvimento Full Stack</strong> — com a seguranca de um Engenheiro de Computacao registrado no CREA.
             </motion.p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#servicos" className="btn btn-primary flex items-center gap-2">Ver serviços <ArrowRight className="h-4 w-4"/></a>
@@ -125,13 +190,13 @@ export default function Page() {
         <div className="mb-10">
           <div className="text-xs uppercase tracking-widest text-muted-foreground mb-2">O que fazemos</div>
           <h2 className="text-2xl md:text-3xl font-semibold leading-tight">Serviços para empresas e residências, do projeto ao suporte.</h2>
-          <p className="mt-2 text-muted-foreground max-w-2xl">Unimos engenharia, automação, TI e desenvolvimento para entregar soluções completas e seguras.</p>
+          <p className="mt-2 text-muted-foreground max-w-2xl">Unimos engenharia, automacao, TI e desenvolvimento para entregar soluções completas e seguras.</p>
         </div>
 
         <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
           {[
-            {icon:<Server className="h-6 w-6"/>,title:"Serviços de TI para Empresas",blurb:"Field Service, redes, servidores, segurança e suporte 24/7 para pequenas, médias e grandes empresas.",bullets:["Redes corporativas, Wi‑Fi, switches e firewalls","Servidores, backup e nuvem","Monitoramento e SLA sob medida"]},
-            {icon:<House className="h-6 w-6"/>,title:"Automação Residencial",blurb:"Iluminação, persianas, climatização, Alexa/Google, integrações e cenários inteligentes com ART.",bullets:["Projeto, instalação e comissionamento","Home Assistant / Matter / Zigbee / Z‑Wave","Documentação técnica e segurança"]},
+            {icon:<Server className="h-6 w-6"/>,title:"Serviços de TI para Empresas",blurb:"Field Service, redes, servidores, seguranca e suporte 24/7 para pequenas, médias e grandes empresas.",bullets:["Redes corporativas, Wi‑Fi, switches e firewalls","Servidores, backup e nuvem","Monitoramento e SLA sob medida"]},
+            {icon:<House className="h-6 w-6"/>,title:"Automação Residencial",blurb:"Iluminação, persianas, climatização, Alexa/Google, integrações e cenários inteligentes com ART.",bullets:["Projeto, instalação e comissionamento","Home Assistant / Matter / Zigbee / Z‑Wave","Documentação técnica e seguranca"]},
             {icon:<AudioLines className="h-6 w-6"/>,title:"Sonorização • Cinema e Ambiente",blurb:"Projetos de Home Cinema e áudio ambiente corporativo com cobertura uniforme e potência correta.",bullets:["Acústica, dimensionamento e DSP","Linhas 70/100V e multizonas","Racks e proteção elétrica"]},
             {icon:<Code2 className="h-6 w-6"/>,title:"Programação Full Stack",blurb:"SaaS/Marketplace, APIs, dashboards e integrações de pagamento com engenharia de software profissional.",bullets:["Frontend: Flutter, React, Vite, Tailwind","Backend: NestJS, Prisma, PostgreSQL","Infra: Render, Vercel, Supabase, Cloudflare"]},
           ].map((s) => (
@@ -152,14 +217,63 @@ export default function Page() {
         </div>
       </section>
 
+      <Anchor id="industria" />
+      <section className="container-p py-16 bg-muted/30">
+        <div className="grid gap-10 items-start lg:grid-cols-2">
+          <div>
+            <div className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Indústria conectada</div>
+            <h2 className="text-2xl md:text-3xl font-semibold leading-tight">Hardware personalizado e IoT para a sua operacao</h2>
+            <p className="mt-2 text-muted-foreground max-w-2xl">Do conceito ao comissionamento, conectamos maquinas, sensores e sistemas corporativos com automacao embarcada, telemetria segura e integracoes em nuvem.</p>
+            <div className="mt-6 space-y-4">
+              {industrialHighlights.map(({ icon: Icon, title, desc }) => (
+                <div key={title} className="flex items-start gap-3 text-sm text-muted-foreground">
+                  <div className="mt-1 flex h-9 w-9 items-center justify-center rounded-full border bg-background">
+                    <Icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-foreground">{title}</h3>
+                    <p>{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8">
+              <Button
+                type="button"
+                onClick={() => openWhatsApp('Ola, quero falar sobre projetos de industria conectada e IoT.')}
+              >
+                Discutir projeto IoT
+              </Button>
+            </div>
+          </div>
+          <Card>
+            <CardBody className="space-y-4">
+              <CardTitle>Arquitetura completa</CardTitle>
+              <CardSub>Integramos hardware, firmware e nuvem para visibilidade em tempo real.</CardSub>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                {industrialStacks.map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-primary" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="rounded-xl border bg-background p-4 text-xs text-muted-foreground">
+                <p><strong>Laboratorio mobil:</strong> impressao 3D, soldagem SMD, instrumentacao e testes EMC.</p>
+              </div>
+            </CardBody>
+          </Card>
+        </div>
+      </section>
+
       <Anchor id="sobre" />
       <section className="container-p py-16">
         <div className="grid md:grid-cols-2 gap-10">
           <div>
             <div className="mb-10">
               <div className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Quem assina</div>
-              <h2 className="text-2xl md:text-3xl font-semibold leading-tight">JR GIROTTO – Engenheiro de Computação (CREA-SP)</h2>
-              <p className="mt-2 text-muted-foreground max-w-2xl">Projetos com responsabilidade técnica (ART), segurança e qualidade. Experiência prática em automação, TI e desenvolvimento de software.</p>
+              <h2 className="text-2xl md:text-3xl font-semibold leading-tight">JR GIROTTO – Engenheiro de Computacao (CREA-SP)</h2>
+              <p className="mt-2 text-muted-foreground max-w-2xl">Projetos com responsabilidade técnica (ART), seguranca e qualidade. Experiência prática em automacao, TI e desenvolvimento de software.</p>
             </div>
             <div className="grid sm:grid-cols-2 gap-4 text-sm">
               <div className="space-y-2">
@@ -203,28 +317,26 @@ export default function Page() {
           <p className="mt-2 text-muted-foreground max-w-2xl">Alguns cases que representam nosso padrão de engenharia, integração e acabamento.</p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { tag: 'SaaS/Marketplace', title: 'BanhoPet', desc: 'Marketplace de serviços pet com split de pagamento, geolocalização e agendamento inteligente (Flutter + Nest + Postgres).' },
-            { tag: 'Automação & Áudio',  title: 'Future ON', desc: 'Automação residencial e sonorização ambiente com projetos assinados por Engenheiro de Computação registrado no CREA.' },
-            { tag: 'TI Corporativa',     title: 'Infraestrutura para Empresas', desc: 'Redes, servidores, segurança e suporte contínuo (SLA) para operação sem interrupções.' },
-          ].map((c) => (
+          {featuredCases.map((c) => (
             <Card key={c.title}>
               <CardBody>
-                <div className="flex items-center justify-between">
-                  <span className="badge">{c.tag}</span>
-                  <Plug className="h-4 w-4 text-muted-foreground" />
-                </div>
-                <h3 className="text-lg font-semibold mt-2">{c.title}</h3>
-                <p className="text-sm text-muted-foreground">{c.desc}</p>
-                  <div className="mt-4 flex gap-2">
-                    <ButtonOutline>Ver detalhes</ButtonOutline>
-                    <Button
-                      type="button"
-                      onClick={() => openWhatsApp(`Ola, tenho interesse em um projeto similar a ${c.title}.`)}
-                    >
-                      Solicitar similar
-                    </Button>
+                <span className="badge">{c.tag}</span>
+                <div className="mt-3 flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border bg-background">
+                    <Image src={c.logo} alt={c.logoAlt} width={44} height={44} className="max-h-10 w-auto" />
                   </div>
+                  <h3 className="text-lg font-semibold">{c.title}</h3>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground">{c.desc}</p>
+                <div className="mt-4 flex gap-2">
+                  <ButtonOutline>Ver detalhes</ButtonOutline>
+                  <Button
+                    type="button"
+                    onClick={() => openWhatsApp(`Ola, tenho interesse em um projeto similar a ${c.title}.`)}
+                  >
+                    Solicitar similar
+                  </Button>
+                </div>
               </CardBody>
             </Card>
           ))}
@@ -239,8 +351,11 @@ export default function Page() {
           <p className="mt-2 text-muted-foreground max-w-2xl">Ferramentas modernas com ecossistema sólido para acelerar entregas sem abrir mão de qualidade.</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          {['NestJS','Prisma','PostgreSQL / PostGIS','Flutter','React / Vite','Tailwind','Supabase','Render','Vercel','Cloudflare','WhatsApp API','Pagar.me'].map(t => (
-            <span key={t} className="badge">{t}</span>
+          {techBadges.map((tech) => (
+            <span key={tech.label} className="badge flex items-center gap-2">
+              <span aria-hidden="true">{tech.icon}</span>
+              <span>{tech.label}</span>
+            </span>
           ))}
         </div>
       </section>
@@ -251,8 +366,8 @@ export default function Page() {
           <div>
             <div className="mb-10">
               <div className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Fale conosco</div>
-              <h2 className="text-2xl md:text-3xl font-semibold leading-tight">Conte seu projeto e receba um orçamento</h2>
-              <p className="mt-2 text-muted-foreground max-w-2xl">Atendemos Marília‑SP e região. Para outras cidades/estados, consulte disponibilidade.</p>
+              <h2 className="text-2xl md:text-3xl font-semibold leading-tight">Conte seu projeto e receba um orcamento</h2>
+              <p className="mt-2 text-muted-foreground max-w-2xl">Atendemos Marilia-SP e regiao. Para outras cidades ou estados, consulte disponibilidade.</p>
             </div>
             <div className="space-y-3 text-sm">
               <a
@@ -270,7 +385,7 @@ export default function Page() {
           </div>
           <Card>
             <CardBody>
-              <CardTitle>Briefing rápido</CardTitle>
+              <CardTitle>Briefing rapido</CardTitle>
               <CardSub>Preencha e continue o atendimento pelo WhatsApp.</CardSub>
               <form onSubmit={handleWhatsAppSubmit} className="mt-4 space-y-3">
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
