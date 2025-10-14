@@ -18,21 +18,21 @@ const featuredCases = [
   {
     tag: 'SaaS/Marketplace',
     title: 'BanhoPet',
-    desc: 'Marketplace de servicos pet com split de pagamento, geolocalizacao e agendamento inteligente (Flutter + Nest + Postgres).',
+    desc: 'Marketplace de serviços pet com split de pagamento, geolocalização e agendamento inteligente (Flutter + Nest + Postgres).',
     logo: '/logo_banhopet.png',
     logoAlt: 'BanhoPet',
   },
   {
-    tag: 'Automacao & Audio',
+    tag: 'Automação & Áudio',
     title: 'Future ON',
-    desc: 'Automacao residencial e sonorizacao ambiente com projetos assinados por Engenheiro de Computacao registrado no CREA.',
+    desc: 'Automação residencial e sonorização ambiente com projetos assinados por Engenheiro de Computação registrado no CREA.',
     logo: '/logo-futureon.svg',
     logoAlt: 'Future ON',
   },
   {
     tag: 'TI Corporativa',
     title: 'Infraestrutura para Empresas',
-    desc: 'Redes, servidores, seguranca e suporte continuo (SLA) para operacoes sem interrupcoes.',
+    desc: 'Redes, servidores, segurança e suporte contínuo (SLA) para operações sem interrupções.',
     logo: '/logo-ti-corporativa.svg',
     logoAlt: 'Infraestrutura corporativa',
   },
@@ -66,10 +66,10 @@ const techBadges = [
 ] as const
 
 const industrialHighlights = [
-  { icon: CircuitBoard, title: 'PCBs e gateways sob medida', desc: 'Prototipagem rapida, design de placas e montagem de lotes pilotos com conformidade EMC.' },
-  { icon: Cpu, title: 'Firmware e automacao embarcada', desc: 'Desenvolvimento em C/C++, Python e Node-RED para PLCs, microcontroladores e edge devices.' },
-  { icon: CloudCog, title: 'Integracao com nuvem e analytics', desc: 'Gateways seguros, APIs e dashboards para supervisao em tempo real e manutencao preditiva.' },
-  { icon: Radio, title: 'Telemetria industrial resiliente', desc: 'LoRaWAN, Zigbee, NB-IoT, 4G/LTE e protocolos Modbus/MQTT para conectar ativos distribuidos.' },
+  { icon: CircuitBoard, title: 'PCBs e gateways sob medida', desc: 'Prototipagem rápida, design de placas e montagem de lotes pilotos com conformidade EMC.' },
+  { icon: Cpu, title: 'Firmware e automação embarcada', desc: 'Desenvolvimento em C/C++, Python e Node-RED para PLCs, microcontroladores e edge devices.' },
+  { icon: CloudCog, title: 'Integração com nuvem e analytics', desc: 'Gateways seguros, APIs e dashboards para supervisão em tempo real e manutenção preditiva.' },
+  { icon: Radio, title: 'Telemetria industrial resiliente', desc: 'LoRaWAN, Zigbee, NB-IoT, 4G/LTE e protocolos Modbus/MQTT para conectar ativos distribuídos.' },
 ] as const
 
 const industrialStacks = [
@@ -77,7 +77,7 @@ const industrialStacks = [
   'LoRaWAN / Zigbee / MQTT',
   'APIs REST / GraphQL',
   'Dashboards Power BI / Superset',
-  'Integracao ERP (SAP, TOTVS, Bling)',
+  'Integração ERP (SAP, TOTVS, Bling)',
   'Alertas via WhatsApp Business API',
 ] as const
 
@@ -112,12 +112,12 @@ export default function Page() {
     const mensagem = getValue('mensagem')
 
     const lines = [
-      'Ola, tenho interesse em um orcamento com a JR Girotto Tecnologia.',
+      'Olá, tenho interesse em um orçamento com a JR Girotto Tecnologia.',
       nome && `Nome: ${nome}`,
       empresa && `Empresa: ${empresa}`,
       cidade && `Cidade/Estado: ${cidade}`,
       whatsapp && `WhatsApp: ${whatsapp}`,
-      servico && `Servico: ${servico}`,
+      servico && `Serviço: ${servico}`,
       mensagem && `Detalhes: ${mensagem}`,
     ].filter((value): value is string => Boolean(value))
 
@@ -156,7 +156,7 @@ export default function Page() {
               Engenharia e Tecnologia que Conectam o Futuro
             </motion.h1>
             <motion.p initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:0.7,delay:0.1}} className="mt-4 text-muted-foreground text-lg">
-              Soluções em <strong>TI Corporativa</strong>, <strong>Automação & Sonorização</strong> e <strong>Desenvolvimento Full Stack</strong> — com a seguranca de um Engenheiro de Computacao registrado no CREA.
+              Soluções em <strong>TI Corporativa</strong>, <strong>Automação & Sonorização</strong> e <strong>Desenvolvimento Full Stack</strong> — com a segurança de um Engenheiro de Computação registrado no CREA.
             </motion.p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#servicos" className="btn btn-primary flex items-center gap-2">Ver serviços <ArrowRight className="h-4 w-4"/></a>
@@ -171,7 +171,7 @@ export default function Page() {
             <div className="relative aspect-video w-full overflow-hidden rounded-2xl border shadow-lg">
               <video
                 className="h-full w-full object-cover"
-                src="/Institucional JRGIROTTO crea WIDE 16-9.mp4"
+                src="/JRGIROTTO.mp4"
                 autoPlay
                 loop
                 muted
@@ -190,13 +190,13 @@ export default function Page() {
         <div className="mb-10">
           <div className="text-xs uppercase tracking-widest text-muted-foreground mb-2">O que fazemos</div>
           <h2 className="text-2xl md:text-3xl font-semibold leading-tight">Serviços para empresas e residências, do projeto ao suporte.</h2>
-          <p className="mt-2 text-muted-foreground max-w-2xl">Unimos engenharia, automacao, TI e desenvolvimento para entregar soluções completas e seguras.</p>
+          <p className="mt-2 text-muted-foreground max-w-2xl">Unimos engenharia, automação, TI e desenvolvimento para entregar soluções completas e seguras.</p>
         </div>
 
         <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
           {[
-            {icon:<Server className="h-6 w-6"/>,title:"Serviços de TI para Empresas",blurb:"Field Service, redes, servidores, seguranca e suporte 24/7 para pequenas, médias e grandes empresas.",bullets:["Redes corporativas, Wi‑Fi, switches e firewalls","Servidores, backup e nuvem","Monitoramento e SLA sob medida"]},
-            {icon:<House className="h-6 w-6"/>,title:"Automação Residencial",blurb:"Iluminação, persianas, climatização, Alexa/Google, integrações e cenários inteligentes com ART.",bullets:["Projeto, instalação e comissionamento","Home Assistant / Matter / Zigbee / Z‑Wave","Documentação técnica e seguranca"]},
+            {icon:<Server className="h-6 w-6"/>,title:"Serviços de TI para Empresas",blurb:"Field Service, redes, servidores, segurança e suporte 24/7 para pequenas, médias e grandes empresas.",bullets:["Redes corporativas, Wi‑Fi, switches e firewalls","Servidores, backup e nuvem","Monitoramento e SLA sob medida"]},
+            {icon:<House className="h-6 w-6"/>,title:"Automação Residencial",blurb:"Iluminação, persianas, climatização, Alexa/Google, integrações e cenários inteligentes com ART.",bullets:["Projeto, instalação e comissionamento","Home Assistant / Matter / Zigbee / Z‑Wave","Documentação técnica e segurança"]},
             {icon:<AudioLines className="h-6 w-6"/>,title:"Sonorização • Cinema e Ambiente",blurb:"Projetos de Home Cinema e áudio ambiente corporativo com cobertura uniforme e potência correta.",bullets:["Acústica, dimensionamento e DSP","Linhas 70/100V e multizonas","Racks e proteção elétrica"]},
             {icon:<Code2 className="h-6 w-6"/>,title:"Programação Full Stack",blurb:"SaaS/Marketplace, APIs, dashboards e integrações de pagamento com engenharia de software profissional.",bullets:["Frontend: Flutter, React, Vite, Tailwind","Backend: NestJS, Prisma, PostgreSQL","Infra: Render, Vercel, Supabase, Cloudflare"]},
           ].map((s) => (
@@ -222,8 +222,8 @@ export default function Page() {
         <div className="grid gap-10 items-start lg:grid-cols-2">
           <div>
             <div className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Indústria conectada</div>
-            <h2 className="text-2xl md:text-3xl font-semibold leading-tight">Hardware personalizado e IoT para a sua operacao</h2>
-            <p className="mt-2 text-muted-foreground max-w-2xl">Do conceito ao comissionamento, conectamos maquinas, sensores e sistemas corporativos com automacao embarcada, telemetria segura e integracoes em nuvem.</p>
+            <h2 className="text-2xl md:text-3xl font-semibold leading-tight">Hardware personalizado e IoT para a sua operação</h2>
+            <p className="mt-2 text-muted-foreground max-w-2xl">Do conceito ao comissionamento, conectamos máquinas, sensores e sistemas corporativos com automação embarcada, telemetria segura e integrações em nuvem.</p>
             <div className="mt-6 space-y-4">
               {industrialHighlights.map(({ icon: Icon, title, desc }) => (
                 <div key={title} className="flex items-start gap-3 text-sm text-muted-foreground">
@@ -240,7 +240,7 @@ export default function Page() {
             <div className="mt-8">
               <Button
                 type="button"
-                onClick={() => openWhatsApp('Ola, quero falar sobre projetos de industria conectada e IoT.')}
+                onClick={() => openWhatsApp('Olá, quero falar sobre projetos de indústria conectada e IoT.')}
               >
                 Discutir projeto IoT
               </Button>
@@ -259,7 +259,7 @@ export default function Page() {
                 ))}
               </ul>
               <div className="rounded-xl border bg-background p-4 text-xs text-muted-foreground">
-                <p><strong>Laboratorio mobil:</strong> impressao 3D, soldagem SMD, instrumentacao e testes EMC.</p>
+                <p><strong>Laboratório móvel:</strong> impressão 3D, soldagem SMD, instrumentação e testes EMC.</p>
               </div>
             </CardBody>
           </Card>
@@ -272,8 +272,8 @@ export default function Page() {
           <div>
             <div className="mb-10">
               <div className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Quem assina</div>
-              <h2 className="text-2xl md:text-3xl font-semibold leading-tight">JR GIROTTO – Engenheiro de Computacao (CREA-SP)</h2>
-              <p className="mt-2 text-muted-foreground max-w-2xl">Projetos com responsabilidade técnica (ART), seguranca e qualidade. Experiência prática em automacao, TI e desenvolvimento de software.</p>
+              <h2 className="text-2xl md:text-3xl font-semibold leading-tight">JR GIROTTO – Engenheiro de Computação (CREA-SP)</h2>
+              <p className="mt-2 text-muted-foreground max-w-2xl">Projetos com responsabilidade técnica (ART), segurança e qualidade. Experiência prática em automação, TI e desenvolvimento de software.</p>
             </div>
             <div className="grid sm:grid-cols-2 gap-4 text-sm">
               <div className="space-y-2">
@@ -397,7 +397,7 @@ export default function Page() {
                   <input className="w-full rounded-xl border px-3 py-2" placeholder="Cidade ou Estado" name="cidade" />
                 </div>
                 <div className="grid grid-cols-3 gap-3 text-sm">
-                  <label className="col-span-3">Servico de Interesse</label>
+                  <label className="col-span-3">Serviço de Interesse</label>
                   <select className="col-span-3 rounded-xl border px-3 py-2" name="servico">
                     <option>TI Corporativa</option>
                     <option>Automação Residencial</option>
