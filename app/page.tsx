@@ -1,6 +1,8 @@
 'use client'
+import type { FormEvent } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Cpu, Shield, Network, ArrowRight, Server, House, AudioLines, Code2, Plug } from 'lucide-react'
+import { Shield, Network, ArrowRight, Server, House, AudioLines, Code2, Plug, MessageCircle } from 'lucide-react'
 import { Button, ButtonOutline } from '@/components/ui/Button'
 import { Card, CardBody, CardTitle, CardSub } from '@/components/ui/Card'
 
@@ -12,21 +14,72 @@ const nav = [
   { id: 'contato', label: 'Contato' },
 ]
 
+
+
+const WHATSAPP_NUMBER = '5514997040256'
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`
 function Anchor({ id }: { id: string }) { return <div id={id} className="scroll-mt-24" /> }
 
 export default function Page() {
+  const openWhatsApp = (text?: string) => {
+    if (typeof window === 'undefined') {
+      return
+    }
+    const query = text ? `?${new URLSearchParams({ text }).toString()}` : ''
+    const url = `${WHATSAPP_LINK}${query}`
+    const popup = window.open(url, '_blank', 'noopener,noreferrer')
+    if (!popup) {
+      window.location.href = url
+    }
+  }
+
+  const handleWhatsAppSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    const getValue = (key: string) => (formData.get(key)?.toString().trim() ?? '')
+
+    const nome = getValue('nome')
+    const whatsapp = getValue('whatsapp')
+    const empresa = getValue('empresa')
+    const cidade = getValue('cidade')
+    const servico = getValue('servico')
+    const mensagem = getValue('mensagem')
+
+    const lines = [
+      'Ola, tenho interesse em um orcamento com a JR Girotto Tecnologia.',
+      nome && `Nome: ${nome}`,
+      empresa && `Empresa: ${empresa}`,
+      cidade && `Cidade/Estado: ${cidade}`,
+      whatsapp && `WhatsApp: ${whatsapp}`,
+      servico && `Servico: ${servico}`,
+      mensagem && `Detalhes: ${mensagem}`,
+    ].filter((value): value is string => Boolean(value))
+
+    const text = lines.join('\n')
+    openWhatsApp(text)
+    form.reset()
+  }
+
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-40 w-full border-b bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container-p h-16 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2 font-semibold">
-            <Cpu className="h-5 w-5" /><span>JR GIROTTO TECNOLOGIA</span>
+            <Image
+              src="/jrgirotto_tecnologia.png"
+              alt="JR Girotto Tecnologia"
+              width={120}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
           </a>
           <nav className="hidden md:flex items-center gap-6">
             {nav.map(n => <a key={n.id} href={`#${n.id}`} className="text-sm text-muted-foreground hover:text-foreground">{n.label}</a>)}
           </nav>
           <div className="flex items-center gap-2">
-            <a href="#contato" className="btn btn-primary">Solicitar Orçamento</a>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Falar no WhatsApp</a>
           </div>
         </div>
       </header>
@@ -50,11 +103,18 @@ export default function Page() {
             </div>
           </div>
           <motion.div initial={{opacity:0,scale:0.98}} animate={{opacity:1,scale:1}} transition={{duration:0.6,delay:0.1}} className="relative">
-            <div className="aspect-video w-full rounded-2xl border bg-gradient-to-br from-muted to-background grid place-items-center">
-              <div className="text-center">
-                <Plug className="mx-auto h-8 w-8 mb-2" />
-                <p className="text-sm text-muted-foreground">Vídeo/Imagem hero (infra • automação • código)</p>
-              </div>
+            <div className="relative aspect-video w-full overflow-hidden rounded-2xl border shadow-lg">
+              <video
+                className="h-full w-full object-cover"
+                src="/Institucional JRGIROTTO crea WIDE 16-9.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls={false}
+                poster="/jrgirotto_tecnologia.png"
+              />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background/80 to-transparent" />
             </div>
           </motion.div>
         </div>
@@ -85,7 +145,7 @@ export default function Page() {
                 <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
                   {s.bullets.map((b:string) => <li key={b} className="list-disc list-inside">{b}</li>)}
                 </ul>
-                <div className="mt-4"><a href="#contato" className="btn btn-ghost">Solicitar orçamento</a></div>
+                <div className="mt-4"><a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Falar agora</a></div>
               </CardBody>
             </Card>
           ))}
@@ -156,10 +216,15 @@ export default function Page() {
                 </div>
                 <h3 className="text-lg font-semibold mt-2">{c.title}</h3>
                 <p className="text-sm text-muted-foreground">{c.desc}</p>
-                <div className="mt-4 flex gap-2">
-                  <ButtonOutline>Ver detalhes</ButtonOutline>
-                  <Button>Solicitar similar</Button>
-                </div>
+                  <div className="mt-4 flex gap-2">
+                    <ButtonOutline>Ver detalhes</ButtonOutline>
+                    <Button
+                      type="button"
+                      onClick={() => openWhatsApp(`Ola, tenho interesse em um projeto similar a ${c.title}.`)}
+                    >
+                      Solicitar similar
+                    </Button>
+                  </div>
               </CardBody>
             </Card>
           ))}
@@ -189,39 +254,46 @@ export default function Page() {
               <h2 className="text-2xl md:text-3xl font-semibold leading-tight">Conte seu projeto e receba um orçamento</h2>
               <p className="mt-2 text-muted-foreground max-w-2xl">Atendemos Marília‑SP e região. Para outras cidades/estados, consulte disponibilidade.</p>
             </div>
-            <div className="space-y-3 text-sm text-muted-foreground">
-              <p>✉️ contato@jrgirotto.com.br</p>
-              <p>📞 WhatsApp Business</p>
-              <p>📍 Marília-SP</p>
+            <div className="space-y-3 text-sm">
+              <a
+                href={WHATSAPP_LINK}
+                className="flex items-center gap-2 font-medium text-foreground hover:text-primary transition-colors"
+              >
+                <MessageCircle className="h-4 w-4" />
+                <span>WhatsApp (14) 99704-0256</span>
+              </a>
+              <p className="flex items-center gap-2 text-muted-foreground">
+                <Network className="h-4 w-4" />
+                <span>Atendemos Marilia-SP e regiao</span>
+              </p>
             </div>
           </div>
           <Card>
             <CardBody>
               <CardTitle>Briefing rápido</CardTitle>
-              <CardSub>Preencha e retornamos em seguida.</CardSub>
-              <form action="https://formsubmit.co/contato@jrgirotto.com.br" method="POST" className="mt-4 space-y-3">
-                <input type="hidden" name="_captcha" value="false" />
-                <div className="grid grid-cols-2 gap-3">
+              <CardSub>Preencha e continue o atendimento pelo WhatsApp.</CardSub>
+              <form onSubmit={handleWhatsAppSubmit} className="mt-4 space-y-3">
+                <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                   <input className="w-full rounded-xl border px-3 py-2" placeholder="Nome" name="nome" required />
-                  <input className="w-full rounded-xl border px-3 py-2" placeholder="Empresa" name="empresa" />
+                  <input className="w-full rounded-xl border px-3 py-2" placeholder="WhatsApp para contato" name="whatsapp" type="tel" required />
                 </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <input className="w-full rounded-xl border px-3 py-2" placeholder="E-mail" type="email" name="email" required />
-                  <input className="w-full rounded-xl border px-3 py-2" placeholder="WhatsApp" name="whatsapp" />
+                <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                  <input className="w-full rounded-xl border px-3 py-2" placeholder="Empresa (opcional)" name="empresa" />
+                  <input className="w-full rounded-xl border px-3 py-2" placeholder="Cidade ou Estado" name="cidade" />
                 </div>
                 <div className="grid grid-cols-3 gap-3 text-sm">
-                  <label className="col-span-3">Serviço de interesse</label>
+                  <label className="col-span-3">Servico de interesse</label>
                   <select className="col-span-3 rounded-xl border px-3 py-2" name="servico">
                     <option>TI Corporativa</option>
-                    <option>Automação Residencial</option>
-                    <option>Sonorização</option>
-                    <option>Programação Full Stack</option>
+                    <option>Automacao Residencial</option>
+                    <option>Sonorizacao</option>
+                    <option>Programacao Full Stack</option>
                   </select>
                 </div>
                 <textarea className="w-full rounded-xl border px-3 py-2" placeholder="Detalhe sua necessidade" name="mensagem" rows={4} required />
                 <div className="flex items-center justify-between">
-                  <small className="text-muted-foreground">Ao enviar, você concorda com nossa política de contato.</small>
-                  <Button type="submit">Enviar</Button>
+                  <small className="text-muted-foreground">Abriremos uma conversa no WhatsApp com estes dados.</small>
+                  <Button type="submit">Abrir conversa</Button>
                 </div>
               </form>
             </CardBody>
