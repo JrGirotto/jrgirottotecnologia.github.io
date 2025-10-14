@@ -366,8 +366,8 @@ export default function Page() {
           <div>
             <div className="mb-10">
               <div className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Fale conosco</div>
-              <h2 className="text-2xl md:text-3xl font-semibold leading-tight">Conte seu projeto e receba um orcamento</h2>
-              <p className="mt-2 text-muted-foreground max-w-2xl">Atendemos Marilia-SP e regiao. Para outras cidades ou estados, consulte disponibilidade.</p>
+              <h2 className="text-2xl md:text-3xl font-semibold leading-tight">Agende agora mesmo uma reunião</h2>
+              <p className="mt-2 text-muted-foreground max-w-2xl">Atendemos Marília-SP e região. Para outras cidades ou estados, consulte disponibilidade.</p>
             </div>
             <div className="space-y-3 text-sm">
               <a
@@ -375,17 +375,17 @@ export default function Page() {
                 className="flex items-center gap-2 font-medium text-foreground hover:text-primary transition-colors"
               >
                 <MessageCircle className="h-4 w-4" />
-                <span>WhatsApp (14) 99704-0256</span>
+                <span>Contate-nos</span>
               </a>
               <p className="flex items-center gap-2 text-muted-foreground">
                 <Network className="h-4 w-4" />
-                <span>Atendemos Marilia-SP e regiao</span>
+                <span>Atendemos Marília-SP e região</span>
               </p>
             </div>
           </div>
           <Card>
             <CardBody>
-              <CardTitle>Briefing rapido</CardTitle>
+              <CardTitle>Briefing rápido</CardTitle>
               <CardSub>Preencha e continue o atendimento pelo WhatsApp.</CardSub>
               <form onSubmit={handleWhatsAppSubmit} className="mt-4 space-y-3">
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -397,12 +397,12 @@ export default function Page() {
                   <input className="w-full rounded-xl border px-3 py-2" placeholder="Cidade ou Estado" name="cidade" />
                 </div>
                 <div className="grid grid-cols-3 gap-3 text-sm">
-                  <label className="col-span-3">Servico de interesse</label>
+                  <label className="col-span-3">Servico de Interesse</label>
                   <select className="col-span-3 rounded-xl border px-3 py-2" name="servico">
                     <option>TI Corporativa</option>
-                    <option>Automacao Residencial</option>
-                    <option>Sonorizacao</option>
-                    <option>Programacao Full Stack</option>
+                    <option>Automação Residencial</option>
+                    <option>Sonorização</option>
+                    <option>Programação Full Stack</option>
                   </select>
                 </div>
                 <textarea className="w-full rounded-xl border px-3 py-2" placeholder="Detalhe sua necessidade" name="mensagem" rows={4} required />
@@ -419,12 +419,11 @@ export default function Page() {
       <footer className="border-t">
         <div className="container-p py-8 text-sm text-muted-foreground flex flex-col md:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <span>© {new Date().getFullYear()} JR Girotto Tecnologia. Todos os direitos reservados.</span>
+            <span>© {new Date().getFullYear()} JR GIROTTO TECNOLOGIA. Todos os direitos reservados.</span>
           </div>
           <div className="flex items-center gap-4">
             <a href="https://www.futureon.com.br" className="hover:text-foreground flex items-center gap-1">futureon.com.br</a>
-            <a href="https://github.com" className="hover:text-foreground flex items-center gap-1">GitHub</a>
-            <a href="https://www.linkedin.com" className="hover:text-foreground flex items-center gap-1">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/jrgirotto" className="hover:text-foreground flex items-center gap-1">LinkedIn</a>
           </div>
         </div>
       </footer>
