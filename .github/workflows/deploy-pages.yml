@@ -24,13 +24,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          # cache: 'npm'  # ❌ REMOVIDO (exigia lockfile)
 
       - name: Install dependencies
         run: npm install
 
-      # ✅ Removido o dois-pontos do name para evitar erro de YAML
       - name: Build static export
-        run: npm run build
+        run: npm run build  # Next 14 com output:'export' gera ./out
 
       - name: Ensure 404 & CNAME
         run: |
