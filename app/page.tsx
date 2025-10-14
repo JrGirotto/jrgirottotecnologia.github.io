@@ -1,5 +1,5 @@
 'use client'
-import type { FormEvent } from 'react'
+import { useEffect, useRef, type FormEvent } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Shield, Network, ArrowRight, Server, House, AudioLines, Code2, MessageCircle, CircuitBoard, Cpu, CloudCog, Radio } from 'lucide-react'
@@ -86,6 +86,8 @@ const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`
 function Anchor({ id }: { id: string }) { return <div id={id} className="scroll-mt-24" /> }
 
 export default function Page() {
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+
   const openWhatsApp = (text?: string) => {
     if (typeof window === 'undefined') {
       return
@@ -97,6 +99,48 @@ export default function Page() {
       window.location.href = url
     }
   }
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) {
+      return
+    }
+
+    const attemptPlayback = () => {
+      if (video.paused) {
+        const playPromise = video.play()
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Autoplay might require a user gesture; ignore errors and retry on interaction.
+          })
+        }
+      }
+    }
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        attemptPlayback()
+      }
+    }
+
+    video.defaultMuted = true
+    video.muted = true
+    video.playsInline = true
+
+    video.addEventListener('canplay', attemptPlayback)
+    video.addEventListener('pointerdown', attemptPlayback)
+    video.addEventListener('touchstart', attemptPlayback, { passive: true })
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
+    attemptPlayback()
+
+    return () => {
+      video.removeEventListener('canplay', attemptPlayback)
+      video.removeEventListener('pointerdown', attemptPlayback)
+      video.removeEventListener('touchstart', attemptPlayback)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [])
 
   const handleWhatsAppSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -172,11 +216,13 @@ export default function Page() {
               <video
                 className="h-full w-full object-cover"
                 src="/JRGIROTTO.mp4"
+                ref={videoRef}
                 autoPlay
                 loop
                 muted
                 playsInline
                 controls={false}
+                preload="metadata"
                 poster="/jrgirotto_tecnologia.png"
               />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background/80 to-transparent" />
