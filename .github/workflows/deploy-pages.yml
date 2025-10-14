@@ -29,11 +29,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # ⚠️ Sem 'next export' — só build.
-      - name: Build
+      # ✅ Removido o dois-pontos do name para evitar erro de YAML
+      - name: Build static export
         run: npm run build
 
-      # (Opcional) Garantir 404 e CNAME (normalmente já vão)
       - name: Ensure 404 & CNAME
         run: |
           cp public/404.html out/404.html 2>/dev/null || true
