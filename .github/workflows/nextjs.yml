@@ -31,6 +31,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+      - name: Download LFS assets
+        run: git lfs pull
       - name: Detect package manager
         id: detect-package-manager
         run: |
