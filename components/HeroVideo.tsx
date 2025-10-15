@@ -1,10 +1,7 @@
 'use client'
 import { useEffect, useRef } from 'react'
 
-const HERO_VIDEO_SOURCES = [
-  '/JRGIROTTO.mp4',
-  '/Institucional JRGIROTTO crea WIDE 16-9.mp4',
-] as const
+const HERO_VIDEO_SOURCES = ['/Institucional JRGIROTTO crea WIDE 16-9.mp4'] as const
 const HERO_VIDEO_POSTER = '/jrgirotto_tecnologia.png'
 
 export function HeroVideo() {
