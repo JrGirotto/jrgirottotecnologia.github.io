@@ -1,7 +1,10 @@
 'use client'
 import { useEffect, useRef } from 'react'
 
-const HERO_VIDEO_SRC = '/JRGIROTTO.mp4'
+const HERO_VIDEO_SOURCES = [
+  '/JRGIROTTO.mp4',
+  '/Institucional JRGIROTTO crea WIDE 16-9.mp4',
+] as const
 const HERO_VIDEO_POSTER = '/jrgirotto_tecnologia.png'
 
 export function HeroVideo() {
@@ -14,6 +17,8 @@ export function HeroVideo() {
     }
 
     let rafId: number | null = null
+
+    let currentSourceIndex = 0
 
     const tryPlay = () => {
       if (!video.paused) {
@@ -74,16 +79,38 @@ export function HeroVideo() {
       { threshold: 0.15 }
     )
 
+    const sources = HERO_VIDEO_SOURCES.filter(Boolean)
+    const applySource = (index: number) => {
+      if (!sources.length || !sources[index]) {
+        return
+      }
+      currentSourceIndex = index
+      if (video.src !== new URL(sources[index], window.location.origin).href) {
+        video.src = sources[index]
+        video.load()
+      }
+    }
+
+    const handleError = () => {
+      const nextIndex = currentSourceIndex + 1
+      if (nextIndex < sources.length) {
+        applySource(nextIndex)
+        ensurePlayback()
+      }
+    }
+
     video.defaultMuted = true
     video.muted = true
     video.playsInline = true
     observer.observe(video)
+    applySource(0)
 
     video.addEventListener('loadedmetadata', ensurePlayback)
     video.addEventListener('canplay', ensurePlayback)
     video.addEventListener('pointerdown', handleUserGesture)
     video.addEventListener('touchstart', handleUserGesture, { passive: true })
     video.addEventListener('keypress', handleUserGesture)
+    video.addEventListener('error', handleError)
     document.addEventListener('visibilitychange', handleVisibilityChange)
     window.addEventListener('focus', tryPlay)
 
@@ -100,6 +127,7 @@ export function HeroVideo() {
       video.removeEventListener('pointerdown', handleUserGesture)
       video.removeEventListener('touchstart', handleUserGesture)
       video.removeEventListener('keypress', handleUserGesture)
+      video.removeEventListener('error', handleError)
       document.removeEventListener('visibilitychange', handleVisibilityChange)
       window.removeEventListener('focus', tryPlay)
     }
@@ -109,7 +137,6 @@ export function HeroVideo() {
     <video
       ref={videoRef}
       className="h-full w-full object-cover"
-      src={HERO_VIDEO_SRC}
       autoPlay
       loop
       muted
@@ -121,7 +148,9 @@ export function HeroVideo() {
       poster={HERO_VIDEO_POSTER}
       aria-label="Video institucional JR Girotto Tecnologia"
     >
-      <source src={HERO_VIDEO_SRC} type="video/mp4" />
+      {HERO_VIDEO_SOURCES.map((source) => (
+        <source key={source} src={source} type="video/mp4" />
+      ))}
       Seu navegador nao suporta videos HTML5.
     </video>
   )
