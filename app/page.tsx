@@ -134,7 +134,7 @@ export default function Page() {
           <a href="#" className="flex items-center gap-2 font-semibold">
             <Image
               src="/jrgirotto_tecnologia.png"
-              alt="JR Girotto Tecnologia"
+              alt="JR GIROTTO TECNOLOGIA"
               width={120}
               height={40}
               className="h-10 w-auto"
