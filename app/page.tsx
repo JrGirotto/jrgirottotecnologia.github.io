@@ -19,7 +19,7 @@ const featuredCases = [
   {
     tag: 'SaaS/Marketplace',
     title: 'BanhoPet',
-    desc: 'Marketplace de serviços pet com split de pagamento, geolocalização e agendamento inteligente (Flutter + Nest + Postgres).',
+    desc: 'Marketplace de serviços pet com split de pagamento, geolocalização e agendamento inteligente.',
     logo: '/logo_banhopet.png',
     logoAlt: 'BanhoPet',
   },
@@ -33,7 +33,7 @@ const featuredCases = [
   {
     tag: 'TI Corporativa',
     title: 'Infraestrutura para Empresas',
-    desc: 'Redes, servidores, segurança e suporte contínuo (SLA) para operações sem interrupções.',
+    desc: 'Redes Wifi, servidores, segurança e suporte contínuo (SLA) para operações sem interrupções.',
     logo: '/logo-ti-corporativa.svg',
     logoAlt: 'Infraestrutura corporativa',
   },
