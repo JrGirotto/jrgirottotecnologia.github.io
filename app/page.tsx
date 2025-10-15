@@ -1,10 +1,11 @@
 'use client'
-import { useEffect, useRef, type FormEvent } from 'react'
+import type { FormEvent } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Shield, Network, ArrowRight, Server, House, AudioLines, Code2, MessageCircle, CircuitBoard, Cpu, CloudCog, Radio } from 'lucide-react'
 import { Button, ButtonOutline } from '@/components/ui/Button'
 import { Card, CardBody, CardTitle, CardSub } from '@/components/ui/Card'
+import { HeroVideo } from '@/components/HeroVideo'
 
 const nav = [
   { id: 'servicos', label: 'Serviços' },
@@ -86,8 +87,6 @@ const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`
 function Anchor({ id }: { id: string }) { return <div id={id} className="scroll-mt-24" /> }
 
 export default function Page() {
-  const videoRef = useRef<HTMLVideoElement | null>(null)
-
   const openWhatsApp = (text?: string) => {
     if (typeof window === 'undefined') {
       return
@@ -99,48 +98,6 @@ export default function Page() {
       window.location.href = url
     }
   }
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) {
-      return
-    }
-
-    const attemptPlayback = () => {
-      if (video.paused) {
-        const playPromise = video.play()
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            // Autoplay might require a user gesture; ignore errors and retry on interaction.
-          })
-        }
-      }
-    }
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        attemptPlayback()
-      }
-    }
-
-    video.defaultMuted = true
-    video.muted = true
-    video.playsInline = true
-
-    video.addEventListener('canplay', attemptPlayback)
-    video.addEventListener('pointerdown', attemptPlayback)
-    video.addEventListener('touchstart', attemptPlayback, { passive: true })
-    document.addEventListener('visibilitychange', handleVisibilityChange)
-
-    attemptPlayback()
-
-    return () => {
-      video.removeEventListener('canplay', attemptPlayback)
-      video.removeEventListener('pointerdown', attemptPlayback)
-      video.removeEventListener('touchstart', attemptPlayback)
-      document.removeEventListener('visibilitychange', handleVisibilityChange)
-    }
-  }, [])
 
   const handleWhatsAppSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -213,18 +170,7 @@ export default function Page() {
           </div>
           <motion.div initial={{opacity:0,scale:0.98}} animate={{opacity:1,scale:1}} transition={{duration:0.6,delay:0.1}} className="relative">
             <div className="relative aspect-video w-full overflow-hidden rounded-2xl border shadow-lg">
-              <video
-                className="h-full w-full object-cover"
-                src="/JRGIROTTO.mp4"
-                ref={videoRef}
-                autoPlay
-                loop
-                muted
-                playsInline
-                controls={false}
-                preload="metadata"
-                poster="/jrgirotto_tecnologia.png"
-              />
+              <HeroVideo />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background/80 to-transparent" />
             </div>
           </motion.div>
